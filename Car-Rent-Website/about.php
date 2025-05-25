@@ -120,7 +120,7 @@ $isAdmin = isset($_SESSION['role']) && $_SESSION['role'] === 'admin';
         <div class="col-md-3 col-sm-6 col-xs-12" id="con">
           <h6 class="content2">TEAM</h6>
           <div class="icons">
-          <a style="color: #fff;" href="https://github.com/ossama21/Cars_Rental_WebSite-Project">  <i class="fa fa-envelope" aria-hidden="true"><span style="font-family: 'montserrat';">&nbsp;&nbsp;https://github.com/ossama21/Cars_Rental_WebSite-Project</span></i></a>
+          <a style="color: #fff;" href="https://github.com/Mohammedali03/cars_rent">  <i class="fa fa-envelope" aria-hidden="true"><span style="font-family: 'montserrat';">&nbsp;&nbsp;https://github.com/ossama21/Cars_Rental_WebSite-Project</span></i></a>
            
           </div>
         </div>
@@ -130,7 +130,7 @@ $isAdmin = isset($_SESSION['role']) && $_SESSION['role'] === 'admin';
     <div class="footer2">
       &copy;2024 <span style="font-family: 'montserrat';">CARS</span>
       All Rights Reserved. <br>
-      Made by : Mohammed Ali & Oussama
+      Made by : Mohammed Ali & khalid
     </div>
   </div>
 </footer>
