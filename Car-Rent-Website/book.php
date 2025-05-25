@@ -131,7 +131,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <div class="col-md-3 col-sm-6 col-xs-12">
             <h6 class="content2">TEAM</h6>
             <div class="icons">
-          <a style="color: #fff;" href="https://github.com/Mohammedali03/cars_rent">  <i class="fa fa-envelope" aria-hidden="true"><span style="font-family: 'montserrat';">&nbsp;&nbsp;https://github.com/ossama21/Cars_Rental_WebSite-Project</span></i></a>
+          <a style="color: #fff;" href="https://github.com/Mohammedali03/cars_rent">  <i class="fa fa-envelope" aria-hidden="true"><span style="font-family: 'montserrat';">&nbsp;&nbsp;https://github.com/Mohammedali03/cars_rent</span></i></a>
            
           </div>
           </div>
