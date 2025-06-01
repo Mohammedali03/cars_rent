@@ -49,7 +49,7 @@
                                 <td>{{ $booking->car->name }}</td>
                                 <td>{{ $booking->start_date->format('M d, Y') }}</td>
                                 <td>{{ $booking->end_date->format('M d, Y') }}</td>
-                                <td>${{ number_format($booking->total_price, 2) }}</td>
+                                <td>${{ number_format($booking->amount, 2) }}</td>
                                 <td>
                                     <span class="badge bg-{{ $booking->status === 'confirmed' ? 'success' : 
                                         ($booking->status === 'pending' ? 'warning' : 
@@ -64,13 +64,11 @@
                                            title="View Details">
                                             <i class="fas fa-eye"></i>
                                         </a>
-                                        <button type="button" 
-                                                class="btn btn-sm btn-primary" 
-                                                data-bs-toggle="modal" 
-                                                data-bs-target="#statusModal{{ $booking->id }}"
-                                                title="Update Status">
+                                        <a href="{{ route('admin.bookings.edit', $booking) }}" 
+                                           class="btn btn-sm btn-primary" 
+                                           title="Update Status">
                                             <i class="fas fa-edit"></i>
-                                        </button>
+                                        </a>
                                         <form action="{{ route('admin.bookings.destroy', $booking) }}" 
                                               method="POST" 
                                               class="d-inline"
@@ -81,37 +79,6 @@
                                                 <i class="fas fa-trash"></i>
                                             </button>
                                         </form>
-                                    </div>
-
-                                    <!-- Status Update Modal -->
-                                    <div class="modal fade" id="statusModal{{ $booking->id }}" tabindex="-1" aria-labelledby="statusModalLabel{{ $booking->id }}" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <form action="{{ route('admin.bookings.status', $booking) }}" method="POST">
-                                                    @csrf
-                                                    @method('PATCH')
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="statusModalLabel{{ $booking->id }}">Update Booking Status</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <div class="mb-3">
-                                                            <label for="status{{ $booking->id }}" class="form-label">Status</label>
-                                                            <select class="form-select" id="status{{ $booking->id }}" name="status" required>
-                                                                <option value="pending" {{ $booking->status === 'pending' ? 'selected' : '' }}>Pending</option>
-                                                                <option value="confirmed" {{ $booking->status === 'confirmed' ? 'selected' : '' }}>Confirmed</option>
-                                                                <option value="cancelled" {{ $booking->status === 'cancelled' ? 'selected' : '' }}>Cancelled</option>
-                                                                <option value="completed" {{ $booking->status === 'completed' ? 'selected' : '' }}>Completed</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                        <button type="submit" class="btn btn-primary">Update Status</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
                                     </div>
                                 </td>
                             </tr>
@@ -130,4 +97,80 @@
         </div>
     </div>
 </div>
-@endsection 
+@endsection
+
+@push('styles')
+<style>
+    .card {
+        border: none;
+        box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    .table {
+        margin-bottom: 0;
+    }
+
+    .table th {
+        font-weight: 600;
+        background-color: #f8f9fa;
+    }
+
+    .btn-group {
+        gap: 0.5rem;
+    }
+
+    .btn-sm {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.875rem;
+    }
+
+    .badge {
+        font-size: 0.875rem;
+        padding: 0.5em 0.75em;
+    }
+
+    .alert {
+        border: none;
+        border-radius: 0.5rem;
+        box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    .btn {
+        transition: all 0.2s ease-in-out;
+    }
+
+    .btn:hover {
+        transform: translateY(-1px);
+    }
+
+    .btn-info {
+        background-color: #0dcaf0;
+        border-color: #0dcaf0;
+    }
+
+    .btn-info:hover {
+        background-color: #31d2f2;
+        border-color: #25cff2;
+    }
+
+    .btn-primary {
+        background-color: #0d6efd;
+        border-color: #0d6efd;
+    }
+
+    .btn-primary:hover {
+        background-color: #0b5ed7;
+        border-color: #0a58ca;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
+
+    .btn-danger:hover {
+        background-color: #bb2d3b;
+        border-color: #b02a37;
+    }
+</style>
+@endpush 

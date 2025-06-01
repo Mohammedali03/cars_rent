@@ -20,6 +20,12 @@ class BookingController extends Controller
         return view('admin.bookings.show', compact('booking'));
     }
 
+    public function edit(Service $booking)
+    {
+        $booking->load(['user', 'car']);
+        return view('admin.bookings.edit', compact('booking'));
+    }
+
     public function updateStatus(Request $request, Service $booking)
     {
         $validated = $request->validate([

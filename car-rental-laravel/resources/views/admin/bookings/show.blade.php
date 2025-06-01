@@ -41,7 +41,7 @@
                         </div>
                         <div class="col-md-4">
                             <h5>Total Price</h5>
-                            <p class="text-primary fw-bold">${{ number_format($booking->total_price, 2) }}</p>
+                            <p class="text-primary fw-bold">${{ number_format($booking->amount, 2) }}</p>
                         </div>
                     </div>
 

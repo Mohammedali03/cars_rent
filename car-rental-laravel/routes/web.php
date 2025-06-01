@@ -31,7 +31,9 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::get('/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
     Route::resource('cars', App\Http\Controllers\Admin\CarController::class);
     Route::resource('users', App\Http\Controllers\Admin\UserController::class);
-    Route::resource('bookings', App\Http\Controllers\Admin\BookingController::class);
+    Route::resource('bookings', App\Http\Controllers\Admin\BookingController::class)->parameters([
+        'bookings' => 'booking'
+    ]);
     Route::patch('bookings/{booking}/status', [App\Http\Controllers\Admin\BookingController::class, 'updateStatus'])->name('bookings.status');
 });
 
